@@ -38,7 +38,7 @@ const app = createApp({
                 })
         },
         getdata(page = 1) {
-            const url = `${this.apiUrl}/api/${this.apiPath}/admin/products?pages=${page}`;
+            const url = `${this.apiUrl}/api/${this.apiPath}/admin/products?page=${page}`;
 
             axios.get(url)
             .then((res) => {
@@ -111,10 +111,10 @@ app.component("productModal", {
                 this.hideModal();
                 this.$emit("update");
             }).catch((err) => {
-                alert(err.res.data.message);
+                alert(err.response.data.message);
             }); 
         },
-        createImage() {
+        createImages() {
             this.product.imagesUrl = [];
             this.product.imagesUrl.push("");
         },
@@ -147,11 +147,11 @@ app.component("delProductModal", {
         delProduct() {
             const url = `${this.apiUrl}/api/${this.apiPath}/admin/product/${this.item.id}`;
 
-            axios.delete(url).then((res) => {
+            axios.delete(url).then((response) => {
                 this.hideModal();
                 this.$emit("update");
             }).catch((err) => {
-                alert(err.res.data.message)
+                alert(err.response.data.message)
             });
         },
         openModal() {
