@@ -1,15 +1,15 @@
-import ProductModal from "./productsModal.js"
+import userProductModal from "./userProductModal.js"
 
-const { defineRule, Form, ErrorMessage, configure } = VeeValidate;
+const { defineRule, Form, Field, ErrorMessage, configure } = VeeValidate;
 const { required, email, min, max } = VeeValidateRules;
-const { localize, loadLocaleFormURL } = VeeValidateI18n;
+const { localize, loadLocaleFromURL } = VeeValidateI18n;
 
 defineRule("required", required);
 defineRule("email", email);
 defineRule("min", min);
 defineRule("max", max);
 
-loadLocaleFormURL("https://unpkg.com/@vee-validate/i18n@4.1.0/dist/locale/zh_TW.json");
+loadLocaleFromURL("https://unpkg.com/@vee-validate/i18n@4.1.0/dist/locale/zh_TW.json");
 
 configure({
     generateMessage: localize("zh_TW"),
@@ -97,7 +97,7 @@ Vue.createApp({
                 this.loadingStatus.loadingItem = '';
             });
         },
-        deleteAllCart() {
+        deleteAllCarts() {
             const url = `${apiUrl}/api/${apiPath}/carts`;
             axios.delete(url).then((res) => {
                 alert(res.data.messge);
@@ -131,7 +131,7 @@ Vue.createApp({
 
             axios.post(url, { data: order }).then((res) => {
                 alert(res.data.message);
-                this.$ref.form.resetForm();
+                this.$refs.form.resetForm();
                 this.getCart();
             }).catch((err) => {
                 alert(err.response.data.message);
@@ -142,6 +142,6 @@ Vue.createApp({
         this.getProducts();
         this.getCart();
     },
-}).component("ProductModal", ProductModal)
+}).component("userProductModal", userProductModal)
     .mount("#app");
     

@@ -1,5 +1,5 @@
 export default {
-    template: "#ProductModal",
+    template: "#userProductModal",
     props: {
         product: {
             type: Object,
@@ -13,7 +13,7 @@ export default {
     data() {
         return {
             status: {},
-            modal: "",
+            modal: '',
             qty: 1,
         };
     },
