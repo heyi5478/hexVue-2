@@ -58,7 +58,7 @@ Vue.createApp({
             axios.get(url).then ((res) => {
                 this.loadingStatus.loadingItem = '';
                 this.product = res.data.product;
-                this.$ref.userProductModal.openModal();
+                this.$refs.userProductModal.openModal();
             }).catch((err) => {
                 alert(err.response.data.message);
             });
@@ -71,7 +71,7 @@ Vue.createApp({
                 qty,
             };
 
-            this.$ref.userProductModal.hideModal();
+            this.$refs.userProductModal.hideModal();
             axios.post(url, { data: cart }).then((res) => {
                 alert(res.data.message);
                 this.loadingStatus.loadingItem = '';

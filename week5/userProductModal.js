@@ -17,10 +17,10 @@ export default {
             qty: 1,
         };
     },
-    mount() {
+    mounted() {
         this.modal = new bootstrap.Modal(this.$refs.modal, {
             keyboard: false,
-            backdrop: "static",
+            backdrop: 'static',
         });
     },
     methods: {
